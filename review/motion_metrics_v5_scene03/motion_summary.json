@@ -1,0 +1,48 @@
+{
+  "scene03_take01": {
+    "path": "C:\\Users\\Vadim\\Downloads\\PhotoDay_H3_v3_Dynamic_Reproducible\\outputs\\raw\\v5\\PhotoDay_H3_v5_scene03_take01_576x1024_124f.mov",
+    "frame_count": 124,
+    "scenes": [
+      {
+        "scene": 1,
+        "frames": "0-47",
+        "motion_mean": 6.8239128527630015,
+        "motion_median": 6.905083550347222,
+        "motion_p95": 7.384627278645833,
+        "changed_pixels_mean_pct": 32.71207335992908
+      },
+      {
+        "scene": 2,
+        "frames": "48-95",
+        "motion_mean": 6.445788660793439,
+        "motion_median": 6.510226779513889,
+        "motion_p95": 7.021676974826388,
+        "changed_pixels_mean_pct": 29.467253989361698
+      },
+      {
+        "scene": 3,
+        "frames": "96-123",
+        "motion_mean": 4.272928120177469,
+        "motion_median": 4.581678602430555,
+        "motion_p95": 5.389084201388889,
+        "changed_pixels_mean_pct": 21.782869566615226
+      },
+      {
+        "scene": 4,
+        "frames": "144-123",
+        "motion_mean": 0.0,
+        "motion_median": 0.0,
+        "motion_p95": 0.0,
+        "changed_pixels_mean_pct": 0.0
+      },
+      {
+        "scene": 5,
+        "frames": "192-123",
+        "motion_mean": 0.0,
+        "motion_median": 0.0,
+        "motion_p95": 0.0,
+        "changed_pixels_mean_pct": 0.0
+      }
+    ]
+  }
+}

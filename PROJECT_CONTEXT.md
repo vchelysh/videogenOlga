@@ -2,13 +2,16 @@
 
 This file is the durable, user-visible recovery state for the PhotoDay video project. Update it after every accepted generation, assembly, QC decision, and delivery. It intentionally excludes hidden platform instructions, private reasoning, credentials, and raw tool logs.
 
+Current status: PASS. The repaired v5 sharp master is complete at `outputs/PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4` with SHA-256 `79562C826A47AD880E1E95A31B22E6ED0529025F37ACE7C6D0ADE941228DA4A3`.
+
 ## Recovery identity
 
 - Active working directory: `C:\Users\Vadim\Downloads\PhotoDay_H3_v3_Dynamic_Reproducible`
 - Earlier complete baseline package: `C:\Users\Vadim\Downloads\PhotoDay_H3_Reproducible_v2`
-- Recovered Codex thread ID: `01a1ff14-0f52-7382-899b-5f54bc2f1ef9`
+- Original production Codex thread ID: `01a1ff14-0f52-7382-899b-5f54bc2f1ef9`
+- Recovery thread IDs: `01a203e5-58a0-7830-81d0-c34a0d05a84f` (17:34 session) and `01a203f6-210b-72f1-9fc3-a96ca272e2a5` (continuation session).
 - Original local rollout: `C:\Users\Vadim\.codex\sessions\2026\11\21\rollout-2026-11-21T19-07-47-01a1ff14-0f52-7382-899b-5f54bc2f1ef9.jsonl`
-- User-visible transcript exported to: `CONVERSATION_TRANSCRIPT.md`
+- User-visible transcripts: `CONVERSATION_TRANSCRIPT.md`, `CONVERSATION_TRANSCRIPT_RECOVERY_2026-11-22_1734.md`, and `CONVERSATION_TRANSCRIPT_CONTINUATION_2026-11-22_1753.md`.
 - Git remote: `https://github.com/vchelysh/videogenOlga.git`
 - Recovery event: power loss on 2026-11-22 while MiniMax H3 scene 03 take 01 had just started.
 
@@ -57,7 +60,7 @@ The user found a critical defect around five seconds in the first v5 assembly: t
 
 - Scene 01: take 01, clean source frames 0-28, temporally resampled with FILM to 48 frames. The later candle-starburst portion is rejected.
 - Scene 02: retain approved v4 lossless frames 49-96.
-- Scene 03: regenerate completely from the clean no-photographer keyframe; acceptance is still pending.
+- Scene 03: take 01 accepted, contiguous source frames 0-47 mapped to delivery frames 97-144 with no temporal interpolation.
 - Scene 04: take 02, accepted contiguous source frames 15-62. Take 01 is rejected because the flash guide bloomed.
 - Scene 05: retain approved v4 lossless frames 193-240.
 
@@ -79,6 +82,19 @@ The clean keyframe contains exactly the seated heroine, makeup artist, and styli
 The interrupted ComfyUI prompt ID was `a0823044-da9d-4f00-af3c-d6c92289ecb1`. It had only reached the initial queued/running state (`0.0 min`) when power was lost. No scene-03 output video was saved, and ComfyUI history cannot be relied on after the restart. Resubmit the deterministic take using the saved graph, keyframe, prompt, seed, and model manifest.
 
 The existing `outputs/upscaled_frames_v5_sharp/upscaled_00001.png` through approximately `upscaled_00205.png` belong to the superseded assembly that still contained the defective old scene 03. They are stale and must not be treated as a final delivery cache.
+
+## Completed recovery outcome
+
+- Scene-03 take 01 was resubmitted successfully as prompt `f533c611-3400-4f27-9a31-355b573e8b16` and rendered in 12.0 minutes.
+- Saved source: `outputs/raw/v5/PhotoDay_H3_v5_scene03_take01_576x1024_124f.mov`; SHA-256 `D6685B8C327E016DC5395AF45E424F42E298CC8070BA46C7023ECDDA543D0DF9`.
+- All 124 source frames were reviewed. Frames 0-47 were accepted directly; there is no photographer, camera, fourth physical person, internal cut or composition morph.
+- `scripts/assemble_v5_source_frames.py` now requires scene 03 and maps it to delivery frames 97-144. It cannot silently copy the defective v4 range anymore.
+- Repaired native preview: `outputs/raw/v5/PhotoDay_v5_repaired_native_preview_576x1024_10s.mp4`; SHA-256 `4872766AB8D5D3657BF9868C2B5F590DBCF8736AF69FDF7947AE119D00ECAC45`.
+- Final source cache: `outputs/source_frames_v5_repaired`; final sharp cache: `outputs/upscaled_frames_v5_repaired_final` with exactly 240 frames.
+- Final delivery: `outputs/PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4`; 1080x1920, 24 fps, 240 frames, exactly 10.000 seconds, H.264 High / AAC-LC.
+- Final SHA-256: `79562C826A47AD880E1E95A31B22E6ED0529025F37ACE7C6D0ADE941228DA4A3`.
+- Full technical and visual acceptance is recorded in `review/QC_REPORT_v5_REPAIRED_SHARP.md`; motion metrics are in `review/motion_metrics_v5_final/`.
+- The stale 205-frame `outputs/upscaled_frames_v5_sharp` cache was not reused.
 
 ## Technical generation state
 
@@ -108,19 +124,19 @@ Scene resubmission command from the repository root:
 C:\Users\Vadim\ComfyUI\.venv\Scripts\python.exe .\scripts\run_minimax_h3_scene_v5.py --scene 03 --take 1 --poll-seconds 20
 ```
 
-## Required continuation sequence
+## Completed continuation sequence
 
-1. Snapshot the text/code/config state in Git before new GPU work.
-2. Start ComfyUI and verify the API at `http://127.0.0.1:8188`.
-3. Resubmit scene 03 take 01 and preserve its output under `outputs/raw/v5/`.
-4. Decode and inspect every source frame. Reject identity drift, soft/torn faces, bad hands, extra person/reflection, candle artifacts, internal cut, or composition jump.
-5. Choose one contiguous clean scene-03 window and produce exactly 48 delivery frames. Use deterministic FILM resampling only if a shorter clean window must be expanded.
-6. Update `prompts/generation_spec_v5.json` with accepted take/window/resampling facts.
-7. Extend `scripts/assemble_v5_source_frames.py` so scene 03 replaces delivery frames 97-144. The current pre-recovery script still copies old base frames 97-144 and is not sufficient.
-8. Assemble exactly 240 v5 source frames with this mapping: scene 01 replacement, locked scene 02, new scene 03, accepted scene 04, locked scene 05.
-9. Re-run the established v4 sharp upscale profile: RealESRGAN_x4plus at full SR blend, unsharp radius 0.65 / amount 75 / threshold 2, 1080x1920, H.264 High, CRF 12, preset slow, tune film, approved AAC audio.
-10. Perform frame-by-frame and technical QC, especially 4-8 seconds, transitions, photographer identity, heroine face/hair, hands, candles, duration, frame count, audio, decode, and black frames.
-11. Update this file, manifests, README/QC reports/checksums, and commit the final text/code/config state.
+1. [x] Snapshot the text/code/config state in Git before new GPU work.
+2. [x] Start ComfyUI and verify the API at `http://127.0.0.1:8188`.
+3. [x] Resubmit scene 03 take 01 and preserve its output under `outputs/raw/v5/`.
+4. [x] Decode and inspect all 124 source frames for identity drift, soft/torn faces, bad hands, extra people/reflections, candle artifacts, internal cuts and composition jumps.
+5. [x] Accept one contiguous clean scene-03 window: source frames 0-47 used directly as 48 delivery frames, without FILM.
+6. [x] Update `prompts/generation_spec_v5.json` with accepted take/window facts.
+7. [x] Extend `scripts/assemble_v5_source_frames.py` so scene 03 is required and replaces delivery frames 97-144.
+8. [x] Assemble exactly 240 v5 source frames: scene 01 replacement, locked scene 02, new scene 03, accepted scene 04 and locked scene 05.
+9. [x] Re-run the established v4 sharp upscale profile into a new cache: RealESRGAN_x4plus at full SR blend, unsharp radius 0.65 / amount 75 / threshold 2, 1080x1920, H.264 High, CRF 12, preset slow, tune film, approved AAC audio.
+10. [x] Perform frame-by-frame and technical QC, especially 4-8 seconds, transitions, photographer identity, heroine face/hair, hands, candles, duration, frame count, audio, decode and black frames.
+11. [x] Update durable context, transcripts, manifests, README, QC reports and checksums; commit and push the final text/code/config state.
 
 ## Repository policy
 
@@ -129,7 +145,7 @@ This directory is the working repository. Media remains physically present but i
 - Ignore all video formats.
 - Ignore all image formats, including source photos, keyframes, decoded frame caches, upscaled frames, and review contact sheets.
 - Track code, PowerShell/Python scripts, prompts, Markdown documentation, JSON workflow/manifests, CSV metrics, environment/model manifests, and checksums.
-- Track `PROJECT_CONTEXT.md` and `CONVERSATION_TRANSCRIPT.md` so a fresh agent can reconstruct the task without the original Codex database.
+- Track `PROJECT_CONTEXT.md` and all `CONVERSATION_TRANSCRIPT*.md` files so a fresh agent can reconstruct the task without the original Codex database.
 - Never commit credentials or tokens.
 
 ## Recovery rule

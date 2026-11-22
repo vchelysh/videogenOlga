@@ -1,13 +1,13 @@
 {
   "project": "PhotoDay H3 v5 selective scene repair",
   "source_assembly_manifest": "workflow/source_assembly_manifest_v5.json",
-  "lossless_source_frames": "outputs/source_frames_v5/source_%05d.png",
-  "native_preview": "outputs/raw/v5/PhotoDay_v5_native_preview_576x1024_10s.mp4",
-  "audio_source": "outputs/PhotoDay_06-12_MINIMAX_H3_v4_SHARP_1080x1920_FINAL.mp4",
+  "lossless_source_frames": "outputs/source_frames_v5_repaired/source_%05d.png",
+  "native_preview": "outputs/raw/v5/PhotoDay_v5_repaired_native_preview_576x1024_10s.mp4",
+  "audio_source": "references/PhotoDay_v1_motion_master.mp4",
   "delivery_output": "outputs/PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4",
   "content_policy": {
-    "regenerated_ranges_one_based": ["1-48", "145-192"],
-    "locked_ranges_one_based": ["49-144", "193-240"],
+    "regenerated_ranges_one_based": ["1-48", "97-144", "145-192"],
+    "locked_ranges_one_based": ["49-96", "193-240"],
     "locked_frame_hash_requirement": "Every locked source PNG must be SHA-256 identical to the approved v4 lossless source sequence."
   },
   "delivery": {
@@ -44,7 +44,8 @@
     },
     "face_restoration": false,
     "global_temporal_interpolation": false,
-    "scene01_local_temporal_repair": "Only accepted H3 frames 0-28 are resampled to 48 with FILM before upscaling; exact positions are serialized in the resample manifest."
+    "scene01_local_temporal_repair": "Only accepted H3 frames 0-28 are resampled to 48 with FILM before upscaling; exact positions are serialized in the resample manifest.",
+    "scene03_selection": "Accepted take 01 source frames 0-47 are used directly for delivery frames 97-144; no temporal interpolation is applied."
   },
-  "command": "C:\\Users\\Vadim\\ComfyUI\\.venv\\Scripts\\python.exe .\\scripts\\upscale_and_encode.py --input .\\outputs\\raw\\v5\\PhotoDay_v5_native_preview_576x1024_10s.mp4 --output .\\outputs\\PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4 --audio-from .\\outputs\\PhotoDay_06-12_MINIMAX_H3_v4_SHARP_1080x1920_FINAL.mp4 --source-frame-dir .\\outputs\\source_frames_v5 --frame-dir .\\outputs\\upscaled_frames_v5_sharp --model C:\\Users\\Vadim\\ComfyUI\\models\\upscale_models\\RealESRGAN_x4plus.pth --sr-blend 1.0 --unsharp-radius 0.65 --unsharp-percent 75 --unsharp-threshold 2 --crf 12 --preset slow --tune film"
+  "command": "C:\\Users\\Vadim\\ComfyUI\\.venv\\Scripts\\python.exe .\\scripts\\upscale_and_encode.py --input .\\outputs\\raw\\v5\\PhotoDay_v5_repaired_native_preview_576x1024_10s.mp4 --output .\\outputs\\PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4 --audio-from .\\references\\PhotoDay_v1_motion_master.mp4 --source-frame-dir .\\outputs\\source_frames_v5_repaired --frame-dir .\\outputs\\upscaled_frames_v5_repaired_final --model C:\\Users\\Vadim\\ComfyUI\\models\\upscale_models\\RealESRGAN_x4plus.pth --sr-blend 1.0 --unsharp-radius 0.65 --unsharp-percent 75 --unsharp-threshold 2 --crf 12 --preset slow --tune film"
 }

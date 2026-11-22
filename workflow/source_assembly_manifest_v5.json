@@ -4,6 +4,13 @@
   "scene01_source_type": "lossless PNG sequence",
   "scene01_sha256": null,
   "scene01_selection_zero_based": null,
+  "scene03_source": "outputs\\raw\\v5\\PhotoDay_H3_v5_scene03_take01_576x1024_124f.mov",
+  "scene03_source_type": "video",
+  "scene03_sha256": "D6685B8C327E016DC5395AF45E424F42E298CC8070BA46C7023ECDDA543D0DF9",
+  "scene03_selection_zero_based": [
+    0,
+    47
+  ],
   "scene04_source": "outputs\\raw\\v5\\PhotoDay_H3_v5_scene04_take02_576x1024_124f.mov",
   "scene04_sha256": "468B44FEEBCE68B693CD16A788EACC354E6C85646AF84E209A2AEADB6301D3E8",
   "scene04_selection_zero_based": [
@@ -11,10 +18,11 @@
     62
   ],
   "locked_base_ranges_one_based": [
-    "49-144",
+    "49-96",
     "193-240"
   ],
-  "output_pattern": "outputs\\source_frames_v5\\source_%05d.png",
+  "replaced_scene03_range_one_based": "97-144",
+  "output_pattern": "outputs\\source_frames_v5_repaired\\source_%05d.png",
   "frame_count": 240,
   "fps": 24
 }

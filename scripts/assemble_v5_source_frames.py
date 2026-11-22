@@ -47,6 +47,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Optional directory containing exactly frame_001.png..frame_048.png; preferred for the FILM-cleaned scene 01.",
     )
+    parser.add_argument("--scene03", type=Path)
+    parser.add_argument(
+        "--scene03-frame-dir",
+        type=Path,
+        help="Optional directory containing exactly 48 accepted/resampled scene-03 PNG frames.",
+    )
     parser.add_argument("--scene04", type=Path, required=True)
     parser.add_argument(
         "--base-frame-dir",
@@ -59,6 +65,7 @@ def parse_args() -> argparse.Namespace:
         default=PACKAGE_ROOT / "outputs" / "source_frames_v5",
     )
     parser.add_argument("--scene01-start", type=int, default=0)
+    parser.add_argument("--scene03-start", type=int, default=0)
     parser.add_argument("--scene04-start", type=int, default=0)
     parser.add_argument("--count", type=int, default=48)
     return parser.parse_args()
@@ -68,8 +75,12 @@ def main() -> None:
     args = parse_args()
     if args.scene01 is None and args.scene01_frame_dir is None:
         raise ValueError("Provide either --scene01 or --scene01-frame-dir")
+    if args.scene03 is None and args.scene03_frame_dir is None:
+        raise ValueError("Provide either --scene03 or --scene03-frame-dir")
     if args.scene01 is not None and not args.scene01.is_file():
         raise FileNotFoundError(args.scene01)
+    if args.scene03 is not None and not args.scene03.is_file():
+        raise FileNotFoundError(args.scene03)
     if not args.scene04.is_file():
         raise FileNotFoundError(args.scene04)
     base_frames = sorted(args.base_frame_dir.glob("source_*.png"))
@@ -87,11 +98,31 @@ def main() -> None:
     else:
         scene01 = decode_rgb(args.scene01)
         selected01 = scene01[args.scene01_start : args.scene01_start + args.count]
+
+    if args.scene03_frame_dir is not None:
+        scene03_paths = sorted(args.scene03_frame_dir.glob("frame_*.png"))
+        if len(scene03_paths) != args.count:
+            raise RuntimeError(
+                f"Expected {args.count} scene03 PNG frames, found {len(scene03_paths)}"
+            )
+        selected03 = [
+            np.asarray(Image.open(path).convert("RGB")) for path in scene03_paths
+        ]
+    else:
+        scene03 = decode_rgb(args.scene03)
+        selected03 = scene03[args.scene03_start : args.scene03_start + args.count]
+
     scene04 = decode_rgb(args.scene04)
     selected04 = scene04[args.scene04_start : args.scene04_start + args.count]
-    if len(selected01) != args.count or len(selected04) != args.count:
+    if (
+        len(selected01) != args.count
+        or len(selected03) != args.count
+        or len(selected04) != args.count
+    ):
         raise RuntimeError(
-            f"Selection too short: scene01={len(selected01)}, scene04={len(selected04)}, expected={args.count}"
+            "Selection too short: "
+            f"scene01={len(selected01)}, scene03={len(selected03)}, "
+            f"scene04={len(selected04)}, expected={args.count}"
         )
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -100,11 +131,13 @@ def main() -> None:
 
     for offset, frame in enumerate(selected01, start=1):
         save_frame(frame, args.output_dir / f"source_{offset:05d}.png")
-    for one_based in range(49, 145):
+    for one_based in range(49, 97):
         shutil.copy2(
             args.base_frame_dir / f"source_{one_based:05d}.png",
             args.output_dir / f"source_{one_based:05d}.png",
         )
+    for offset, frame in enumerate(selected03, start=97):
+        save_frame(frame, args.output_dir / f"source_{offset:05d}.png")
     for offset, frame in enumerate(selected04, start=145):
         save_frame(frame, args.output_dir / f"source_{offset:05d}.png")
     for one_based in range(193, 241):
@@ -122,10 +155,15 @@ def main() -> None:
         "scene01_source_type": "lossless PNG sequence" if args.scene01_frame_dir else "video",
         "scene01_sha256": sha256(args.scene01) if args.scene01 else None,
         "scene01_selection_zero_based": None if args.scene01_frame_dir else [args.scene01_start, args.scene01_start + args.count - 1],
+        "scene03_source": str(args.scene03_frame_dir or args.scene03),
+        "scene03_source_type": "lossless PNG sequence" if args.scene03_frame_dir else "video",
+        "scene03_sha256": sha256(args.scene03) if args.scene03 else None,
+        "scene03_selection_zero_based": None if args.scene03_frame_dir else [args.scene03_start, args.scene03_start + args.count - 1],
         "scene04_source": str(args.scene04),
         "scene04_sha256": sha256(args.scene04),
         "scene04_selection_zero_based": [args.scene04_start, args.scene04_start + args.count - 1],
-        "locked_base_ranges_one_based": ["49-144", "193-240"],
+        "locked_base_ranges_one_based": ["49-96", "193-240"],
+        "replaced_scene03_range_one_based": "97-144",
         "output_pattern": str(args.output_dir / "source_%05d.png"),
         "frame_count": 240,
         "fps": 24,

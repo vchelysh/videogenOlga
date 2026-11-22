@@ -23,8 +23,8 @@
   "keyframe_file": "keyframes_v5/scene_03_start_v3_no_photographer.png",
   "keyframe_sha256": "29B89215AD72A23C2A60C2C6D3EA27417EFD68F825BCFD4A4DF74C77F641709C",
   "workflow_file": "workflow/minimax_h3_v5_scene03_take01_api.json",
-  "prompt_id": null,
-  "render_minutes": null,
-  "output": null,
-  "output_sha256": null
+  "prompt_id": "f533c611-3400-4f27-9a31-355b573e8b16",
+  "render_minutes": 12.012301965554554,
+  "output": "outputs/raw/v5/PhotoDay_H3_v5_scene03_take01_576x1024_124f.mov",
+  "output_sha256": "D6685B8C327E016DC5395AF45E424F42E298CC8070BA46C7023ECDDA543D0DF9"
 }

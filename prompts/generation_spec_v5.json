@@ -44,9 +44,9 @@
       "keyframe_file": "keyframes_v5/scene_03_start_v3_no_photographer.png",
       "conditioning": "first frame only",
       "delivery_frame_count": 48,
-      "accepted_take": null,
-      "selection_start_frame": null,
-      "accepted_source_window_zero_based": null,
+      "accepted_take": 1,
+      "selection_start_frame": 0,
+      "accepted_source_window_zero_based": [0, 47],
       "purpose": "Continuous makeup-and-styling shot with exactly three physical women, no old photographer or camera, no internal transition and stable sharp faces."
     },
     "04": {

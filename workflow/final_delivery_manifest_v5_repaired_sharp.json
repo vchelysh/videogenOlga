@@ -1,0 +1,43 @@
+{
+  "project": "PhotoDay MiniMax H3 v5 selective scene repair / repaired sharp delivery",
+  "created_local_date": "2026-11-22",
+  "native_preview_file": "outputs/raw/v5/PhotoDay_v5_repaired_native_preview_576x1024_10s.mp4",
+  "source_assembly_manifest": "workflow/source_assembly_manifest_v5.json",
+  "generation_spec": "prompts/generation_spec_v5.json",
+  "scene03": {
+    "file": "outputs/raw/v5/PhotoDay_H3_v5_scene03_take01_576x1024_124f.mov",
+    "sha256": "D6685B8C327E016DC5395AF45E424F42E298CC8070BA46C7023ECDDA543D0DF9",
+    "prompt_id": "f533c611-3400-4f27-9a31-355b573e8b16",
+    "accepted_source_window_zero_based": [0, 47],
+    "delivery_range_one_based": [97, 144]
+  },
+  "final_file": "outputs/PhotoDay_06-12_MINIMAX_H3_v5_REPAIRED_SHARP_1080x1920_FINAL.mp4",
+  "sha256": "79562C826A47AD880E1E95A31B22E6ED0529025F37ACE7C6D0ADE941228DA4A3",
+  "size_bytes": 40557895,
+  "duration_seconds": 10.0,
+  "frame_count": 240,
+  "fps": 24,
+  "video": {
+    "codec": "h264",
+    "profile": "High",
+    "width": 1080,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "bit_rate": 32245897,
+    "x264_crf": 12,
+    "x264_preset": "slow",
+    "x264_tune": "film"
+  },
+  "audio": {
+    "codec": "aac",
+    "profile": "LC",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_rate": 193309
+  },
+  "upscale_spec": "prompts/postprocess_spec_v5.json",
+  "qc_report": "review/QC_REPORT_v5_REPAIRED_SHARP.md",
+  "motion_metrics": "review/motion_metrics_v5_final/motion_summary.json",
+  "fixed_defect": "The obsolete photographer and composition jump around five seconds were removed by replacing the complete delivery range 97-144 with accepted scene-03 take-01 frames 0-47.",
+  "status": "passed"
+}

@@ -6,7 +6,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "SHA256SUMS.txt"
-EXCLUDED_PARTS = {"__pycache__", "upscaled_frames", "upscaled_frames_v4_sharp"}
+EXCLUDED_PARTS = {".git", ".idea", ".pytest_cache", "__pycache__"}
+EXCLUDED_DIR_PREFIXES = (
+    "source_frames_v5",
+    "upscaled_frames",
+    "v5_scene03_take01_",
+)
+
+
+def is_excluded(relative: Path) -> bool:
+    return any(
+        part in EXCLUDED_PARTS
+        or any(part.startswith(prefix) for prefix in EXCLUDED_DIR_PREFIXES)
+        for part in relative.parts
+    )
 
 
 def sha256(path: Path) -> str:
@@ -23,7 +36,7 @@ def main() -> None:
         if not path.is_file() or path == OUTPUT:
             continue
         relative = path.relative_to(ROOT)
-        if any(part in EXCLUDED_PARTS for part in relative.parts):
+        if is_excluded(relative):
             continue
         files.append((relative.as_posix(), path))
     lines = [f"{sha256(path)}  {relative}" for relative, path in sorted(files)]
