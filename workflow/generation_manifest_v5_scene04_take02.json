@@ -1,0 +1,30 @@
+{
+  "project": "PhotoDay H3 v5 selective scene repair",
+  "strategy": "Regenerate only scenes 01 and 04 as isolated H3 shots at higher native resolution; keep scenes 02, 03 and 05 from the approved v4 source sequence unchanged.",
+  "scene": "04",
+  "take": 2,
+  "seed": 6123113,
+  "width": 576,
+  "height": 1024,
+  "length": 124,
+  "fps": 24.0,
+  "steps": 8,
+  "sampler": "res_multistep",
+  "scheduler": "simple",
+  "denoise": 1.0,
+  "models": {
+    "unet": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+    "turbo_lora": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+    "turbo_strength": 1.0
+  },
+  "prompt_file": "prompts/scene04_video_prompt_v5.txt",
+  "keyframe_file": "keyframes_v5/scene_04_start_v2_unlit_flash.png",
+  "keyframe_sha256": "4AA1684824B245B9C910E2BD852188EAF2A65EE788A1038710CDD03E4C4BB119",
+  "workflow_file": "workflow/minimax_h3_v5_scene04_take02_api.json",
+  "prompt_id": "b65c7843-7aae-4d4c-9012-bec5bf8a42e2",
+  "render_minutes": 10.346306816736858,
+  "output": "outputs/raw/v5/PhotoDay_H3_v5_scene04_take02_576x1024_124f.mov",
+  "output_sha256": "468B44FEEBCE68B693CD16A788EACC354E6C85646AF84E209A2AEADB6301D3E8"
+}

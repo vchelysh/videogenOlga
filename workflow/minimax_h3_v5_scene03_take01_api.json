@@ -1,0 +1,159 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v5/scene_03_start.png"
+    }
+  },
+  "20": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "Create one continuous premium live-action vertical beauty-preparation shot in the exact Old Hollywood Christmas interior shown by the first-frame guide. Preserve the guide as the exact identities, wardrobe, set, camera angle and color anchor. Exactly three physical adult women remain visible: the seated brunette model in the center, the makeup artist with glasses on the left, and the short-haired stylist on the right. The soft partial mirror reflection at the lower-right edge belongs only to the seated model and must never become another person. There is no photographer and no camera anywhere in the shot. No person enters or leaves, and there is no cut, transition, scene change or composition change.\n\nThe model remains seated and poised on one stable facial plane. She takes one quiet breath and makes one slow natural blink. The makeup artist makes one small controlled finishing sweep with the soft brush along the model's cheek and then holds position. The stylist makes one tiny precise adjustment to the pearl earring and one nearby curl, then holds position. Their hands move slowly and anatomically correctly without covering the model's eyes or crossing through her face. The model's identity, eyes, lips, jaw, hairline and individual curl groups stay continuously coherent and crisply focused. Both professionals' faces, glasses, hands and fingers remain clean and stable.\n\nAll visible candles remain lit with small independent natural flames; the candle bodies, grand piano, mirror, vanity objects, pearls and burgundy curtains stay fixed. Pearl beads keep separate bead detail and restrained reflections. Use moderate depth of field with focus locked on the model's eyes and enough depth to keep both professionals readable. Camera movement is limited to a very slow one-percent push-in. Realistic 24 fps timing, warm sculpted tungsten light, deep blacks, burgundy and restrained gold; photorealistic luxury campaign with natural skin and hair texture.\n\nNo text, logo or watermark. No photographer, photographic camera, fourth physical person, champagne glass, toast, scene morph, internal cut, pose jump, identity drift, face morph, refocus, soft facial frame, torn or jagged face edge, beauty-filter skin, malformed hand, extra finger, fused fingers, brush through skin, earring through hand, jewelry flare, candle starburst, candle extinction, pulsing light, camera shake, foreground wipe, CGI or frozen-photo look.",
+      "width": 576,
+      "height": 1024,
+      "length": 124,
+      "first_frame": [
+        "10",
+        0
+      ]
+    }
+  },
+  "30": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "conditioning": [
+        "20",
+        0
+      ]
+    }
+  },
+  "31": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 6122103
+    }
+  },
+  "32": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "33": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 8,
+      "denoise": 1.0
+    }
+  },
+  "34": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "31",
+        0
+      ],
+      "guider": [
+        "30",
+        0
+      ],
+      "sampler": [
+        "32",
+        0
+      ],
+      "sigmas": [
+        "33",
+        0
+      ],
+      "latent_image": [
+        "20",
+        1
+      ]
+    }
+  },
+  "40": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "34",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "42": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "40",
+        0
+      ],
+      "fps": 24.0,
+      "codec": "none"
+    }
+  },
+  "43": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "42",
+        0
+      ],
+      "filename_prefix": "minimax_h3_photoday_v5/scene_03_take01",
+      "format": "mov",
+      "codec": "prores"
+    }
+  }
+}

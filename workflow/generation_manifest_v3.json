@@ -1,0 +1,62 @@
+{
+  "project": "PhotoDay H3 v3 dynamic",
+  "strategy": "single continuous generation matching v1 motion architecture; only scene identity/hair guides changed",
+  "width": 448,
+  "height": 800,
+  "length": 243,
+  "fps": 24.0,
+  "steps": 8,
+  "seed": 6122026,
+  "sampler": "res_multistep",
+  "scheduler": "simple",
+  "denoise": 1.0,
+  "models": {
+    "unet": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+    "audio_vae": "minimax_h3_audio_vae_fp32.safetensors",
+    "turbo_lora": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+    "turbo_strength": 1.0
+  },
+  "keyframes": [
+    {
+      "file": "scene_01.png",
+      "frame": 0,
+      "source": "v1 accepted"
+    },
+    {
+      "file": "scene_02.png",
+      "frame": 48,
+      "source": "v1 accepted"
+    },
+    {
+      "file": "scene_03.png",
+      "frame": 96,
+      "source": "v1 composition edited to supplied female photographer"
+    },
+    {
+      "file": "scene_04.png",
+      "frame": 144,
+      "source": "v1 composition edited to supplied female photographer"
+    },
+    {
+      "file": "scene_05.png",
+      "frame": 192,
+      "source": "v1 portrait with corrected natural dark hair rim"
+    },
+    {
+      "file": "scene_05.png",
+      "frame": 242,
+      "source": "final-frame identity and hair anchor"
+    }
+  ],
+  "forbidden_strategy": "Do not add repeated internal guide frames; that caused the rejected static v2 result.",
+  "native_output": "448x800 H.264/AAC, 10.125 seconds",
+  "resolution_note": "512x896 was attempted first and failed at sampler step 1 with CUDA OOM on the RTX 3070 8 GB. 448x800 is the proven v1-native fallback; final delivery still uses documented super-resolution to 1080x1920.",
+  "delivery_output": "1080x1920 H.264/AAC, exactly 10.000 seconds",
+  "prompt_file": "prompts/video_prompt_v3.txt",
+  "workflow_file": "workflow/minimax_h3_v3_api.json",
+  "successful_prompt_id": "9eee5c9b-f1b8-4d19-b6d5-decb5fe7a8f8",
+  "successful_render_minutes": 40.7,
+  "raw_output": "outputs/raw/PhotoDay_H3_v3_raw_448x800_10.125s.mp4"
+}

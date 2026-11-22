@@ -1,0 +1,29 @@
+{
+  "project": "PhotoDay MiniMax H3 v3 dynamic final",
+  "created_local_date": "2026-11-22",
+  "final_file": "outputs/PhotoDay_06-12_MINIMAX_H3_v3_DYNAMIC_1080x1920_FINAL.mp4",
+  "sha256": "D277D9B5D7DAF0EDE2EC3FFD470079C0651CF14522B603E2C6DA54AFE8C87E01",
+  "size_bytes": 13809828,
+  "duration_seconds": 10.0,
+  "frame_count": 240,
+  "fps": 24,
+  "video": {
+    "codec": "h264",
+    "profile": "High",
+    "width": 1080,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "bit_rate": 10847444
+  },
+  "audio": {
+    "codec": "aac",
+    "profile": "LC",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_rate": 193309
+  },
+  "generation_prompt_id": "9eee5c9b-f1b8-4d19-b6d5-decb5fe7a8f8",
+  "generation_seed": 6122026,
+  "qc_report": "review/QC_REPORT.md",
+  "status": "passed"
+}

@@ -1,0 +1,104 @@
+{
+  "v1": {
+    "path": "C:\\Users\\Vadim\\Downloads\\PhotoDay_H3_v3_Dynamic_Reproducible\\references\\PhotoDay_v1_motion_master.mp4",
+    "frame_count": 240,
+    "scenes": [
+      {
+        "scene": 1,
+        "frames": "0-47",
+        "motion_mean": 2.033728206264775,
+        "motion_median": 1.8776215277777777,
+        "motion_p95": 2.9692222222222213,
+        "changed_pixels_mean_pct": 15.938127955082743,
+        "motion_vs_v1_ratio": 1.0
+      },
+      {
+        "scene": 2,
+        "frames": "48-95",
+        "motion_mean": 5.696398862293145,
+        "motion_median": 5.287135416666667,
+        "motion_p95": 7.998081597222222,
+        "changed_pixels_mean_pct": 43.55647901891253,
+        "motion_vs_v1_ratio": 1.0
+      },
+      {
+        "scene": 3,
+        "frames": "96-143",
+        "motion_mean": 5.9293476654846335,
+        "motion_median": 2.0324479166666665,
+        "motion_p95": 20.5820954861111,
+        "changed_pixels_mean_pct": 27.22935135933806,
+        "motion_vs_v1_ratio": 1.0
+      },
+      {
+        "scene": 4,
+        "frames": "144-191",
+        "motion_mean": 2.76161679964539,
+        "motion_median": 1.420295138888889,
+        "motion_p95": 3.004258680555554,
+        "changed_pixels_mean_pct": 11.057734929078016,
+        "motion_vs_v1_ratio": 1.0
+      },
+      {
+        "scene": 5,
+        "frames": "192-239",
+        "motion_mean": 0.46100177304964557,
+        "motion_median": 0.3331423611111111,
+        "motion_p95": 1.1120850694444442,
+        "changed_pixels_mean_pct": 2.756685874704492,
+        "motion_vs_v1_ratio": 1.0
+      }
+    ]
+  },
+  "v2": {
+    "path": "C:\\Users\\Vadim\\Downloads\\PhotoDay_H3_v3_Dynamic_Reproducible\\references\\PhotoDay_v2_rejected_static.mp4",
+    "frame_count": 240,
+    "scenes": [
+      {
+        "scene": 1,
+        "frames": "0-47",
+        "motion_mean": 2.0422639627659573,
+        "motion_median": 1.8546875,
+        "motion_p95": 3.1549687499999997,
+        "changed_pixels_mean_pct": 15.123411643026007,
+        "motion_vs_v1_ratio": 1.0041970979577746
+      },
+      {
+        "scene": 2,
+        "frames": "48-95",
+        "motion_mean": 0.7267065602836881,
+        "motion_median": 0.50921875,
+        "motion_p95": 2.1474305555555553,
+        "changed_pixels_mean_pct": 5.712544326241138,
+        "motion_vs_v1_ratio": 0.12757297686685246
+      },
+      {
+        "scene": 3,
+        "frames": "96-143",
+        "motion_mean": 0.775131870567376,
+        "motion_median": 0.2326909722222222,
+        "motion_p95": 3.8483211805555504,
+        "changed_pixels_mean_pct": 4.47728280141844,
+        "motion_vs_v1_ratio": 0.1307280183753605
+      },
+      {
+        "scene": 4,
+        "frames": "144-191",
+        "motion_mean": 0.7904790927895982,
+        "motion_median": 0.3064409722222222,
+        "motion_p95": 2.0126041666666663,
+        "changed_pixels_mean_pct": 4.613955378250591,
+        "motion_vs_v1_ratio": 0.2862377911704118
+      },
+      {
+        "scene": 5,
+        "frames": "192-239",
+        "motion_mean": 0.46769466607565024,
+        "motion_median": 0.1040625,
+        "motion_p95": 1.3959982638888886,
+        "changed_pixels_mean_pct": 2.6549202127659575,
+        "motion_vs_v1_ratio": 1.0145181502919813
+      }
+    ]
+  }
+}

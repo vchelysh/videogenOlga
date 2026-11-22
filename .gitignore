@@ -1,0 +1,29 @@
+# Generated and source video media stay in the working tree only.
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.m4v
+*.mpg
+*.mpeg
+*.wmv
+
+# Source, keyframe, frame-cache, and review images also stay local.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.exr
+
+# Runtime caches and interrupted temporary files.
+__pycache__/
+*.py[cod]
+*.part
+*.tmp
+.pytest_cache/
+

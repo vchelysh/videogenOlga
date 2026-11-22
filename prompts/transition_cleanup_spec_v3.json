@@ -1,0 +1,18 @@
+{
+  "problem": "Generated camera-flash bloom and scene morph affected frames 167-188, including a severe white/gold flare across the heroine's hair and shoulder.",
+  "source_video": "outputs/raw/PhotoDay_H3_v3_raw_448x800_10.125s.mp4",
+  "retained_ranges": [
+    {"output_frames": "0-143", "source_frames": "0-143", "purpose": "scenes 1-3 unchanged"},
+    {"output_frames": "144-191", "source_frames": "144-166 plus FILM midframes", "purpose": "clean scene 4 action retimed to exactly 2 seconds"},
+    {"output_frames": "192-239", "source_frames": "192-239", "purpose": "clean final portrait unchanged"}
+  ],
+  "interpolation": {
+    "model": "film_net_fp16.safetensors",
+    "source": "https://huggingface.co/Comfy-Org/frame_interpolation/resolve/main/frame_interpolation/film_net_fp16.safetensors",
+    "sha256": "F226E51375DC839D4B40E5C3D63DA560DD1EA1C962364EC78F5ADF2D05DB05C0",
+    "multiplier": 2,
+    "scope": "scene 4 clean frames only; no interpolation in faces or hair elsewhere"
+  },
+  "delivery_timing": {"fps": 24, "frame_count": 240, "duration_seconds": 10.0},
+  "forbidden": ["use any source frame from 167 through 191", "retain the generated flare", "interpolate the final portrait"]
+}

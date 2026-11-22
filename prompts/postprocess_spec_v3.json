@@ -1,0 +1,41 @@
+{
+  "source": "outputs/raw/PhotoDay_H3_v3_clean_FILM_448x800_10s.mp4",
+  "raw_generation_source": "outputs/raw/PhotoDay_H3_v3_raw_448x800_10.125s.mp4",
+  "transition_cleanup_spec": "prompts/transition_cleanup_spec_v3.json",
+  "motion_reference": "references/PhotoDay_v1_motion_master.mp4",
+  "audio_source": "references/PhotoDay_v1_motion_master.mp4",
+  "reason_for_audio_source": "Preserve the timing and sound bed of the user-approved v1 while replacing only the picture generation.",
+  "delivery": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 24,
+    "frame_count": 240,
+    "duration_seconds": 10.0,
+    "video_codec": "libx264",
+    "preset": "slow",
+    "crf": 16,
+    "pixel_format": "yuv420p",
+    "color": "bt709",
+    "audio_codec": "aac",
+    "audio_bitrate": "192k",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2
+  },
+  "upscale": {
+    "model": "RealESRGAN_x4plus.pth",
+    "model_sha256": "4FA0D38905F75AC06EB49A7951B426670021BE3018265FD191D2125DF9D682F1",
+    "tile": 256,
+    "overlap": 32,
+    "real_esrgan_blend": 0.65,
+    "lanczos_blend": 0.35,
+    "resize_policy": "cover then center-crop; no geometric stretching",
+    "face_restoration": false,
+    "temporal_interpolation": "FILM 2x only inside corrected scene 4; no global fps conversion and no interpolation in the final portrait"
+  },
+  "quality_policy": [
+    "Retain 24 fps timing. FILM is permitted only for the documented scene-4 repair that removes rejected raw frames 167-191.",
+    "Do not use face restoration because it can alter identity.",
+    "Blend super-resolution with deterministic Lanczos to limit synthetic texture and temporal shimmer.",
+    "Inspect all 240 delivery frames for identity, hair flare, flicker, hands, glasses and scene obstructions."
+  ]
+}

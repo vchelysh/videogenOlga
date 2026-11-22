@@ -1,0 +1,298 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v3/scene_01.png"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v3/scene_02.png"
+    }
+  },
+  "12": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v3/scene_03.png"
+    }
+  },
+  "13": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v3/scene_04.png"
+    }
+  },
+  "14": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "h3_photoday_v3/scene_05.png"
+    }
+  },
+  "20": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "Create a premium live-action vertical Instagram commercial for an exclusive New Year Photo Day. This is a motion-preserving revision of the approved v1 film. Preserve every supplied guide frame as the exact visual and identity anchor for its shot: the same adult brunette heroine, the same two female professionals, the supplied adult female photographer with slicked-back brown hair and sculptural gold earrings, the black grand piano, ivory carved fireplace, burgundy velvet, pearls, candles and Christmas tree. There is no male photographer anywhere. Generate the complete film as one continuous 10.125-second sequence so movement, rhythm and editorial transitions remain as fluid and alive as v1. Use five clearly readable shots with editorial cuts around 2.0, 4.0, 6.0 and 8.0 seconds. Never turn the shots into static photographs and never morph one room or person into the next shot.\n\n[0.0s-2.0s] HERO — open exactly on the first guide image. The glamorous heroine sits beside the grand piano. She takes a quiet breath, blinks once, turns her eyes toward the lens and lightly presses two piano keys with her right fingertips. A tiny warm highlight travels along her pearls. Use a restrained three-percent camera push-in; her shoulders, curls and fingertips have subtle continuous natural movement. Candle flames move naturally and the tree lights remain steady.\n\n[2.0s-4.0s] VENUE REVEAL — clean match cut from the pearl highlight to a gold-and-pearl ornament in the second guide image. The camera makes a short elegant lateral glide revealing the ivory fireplace, decorated tree and edge of the grand piano. The fire moves gently and candlelight reflections travel naturally across the parquet. Tree lights remain stable. No person enters and no curtain, tassel, fur or foreground object crosses the lens.\n\n[4.0s-6.0s] THE TEAM — clean editorial cut to the third guide image. In the mirror composition the makeup artist completes one precise cheek-brush stroke, the distinct short dark-blonde stylist adjusts the pearl earring once, and the supplied female photographer smoothly raises her mirrorless camera to frame the portrait. The heroine looks at her reflection and gives a small confident smile. All four adult women remain recognizable and move with restrained professional timing. Hands, camera, mirror reflection, faces and curls remain coherent. The flash is disabled; exposure stays constant.\n\n[6.0s-8.0s] THE MEMORY — clean energetic cut to the fourth guide image. The heroine, makeup artist and stylist share a spontaneous natural laugh and bring their three coupe glasses together for one gentle clink. The same supplied female photographer remains visible in the background and captures the candid moment without a visible flash. Champagne stays inside the glasses. Arms, shoulders, faces and hair continue moving naturally; no frozen tableau, no crowd and no new person.\n\n[8.0s-10.125s] THE PORTRAIT — match cut from a restrained champagne sparkle to candle bokeh, landing on the fifth guide image. Close portrait beside the piano: the heroine turns her eyes into the lens, makes one slow blink and the faintest satisfied smile. A loose curl and her breathing create subtle continuous secondary motion while the camera performs a minimal push-in. Her brunette curls retain realistic strand groups, natural dark edges and controlled internal brown highlights from beginning to end. No backlight hotspot, no orange or white rim, no glowing outline and no progressive brightening. The last quarter-second settles into an immaculate editorial portrait.\n\nVisual language: photorealistic Old Hollywood luxury, premium fashion campaign, warm sculpted tungsten light, deep blacks, burgundy, ivory and restrained gold, realistic skin texture, physically correct hands, stable jewelry, elegant natural human timing, live-action 24 fps, no artificial slow-motion look. Motion must remain clearly visible but refined: breathing, eye direction, smiles, professional hand gestures, camera movement, laughter, glass movement, hair secondary motion and environmental reflections.\n\nAudio: original elegant instrumental vintage jazz with soft grand piano, brushed drums and warm upright bass, no vocals and no speech. Two quiet piano notes at the opening, subtle fireplace room tone in shot two, one camera shutter near 5.8 seconds, one delicate glass clink near 6.8 seconds, one restrained shutter accent near 7.8 seconds, and music resolving cleanly at the end.\n\nAbsolutely no text, captions, date cards, logos or watermarks. No male photographer, no fabric wipe, no curtain or fur crossing the lens, no scene-covering object, no identity change, no gender change, no face morph, no extra people, no duplicated body, no malformed fingers, no merged glasses, no warped piano, no melting decor, no pulsing tree, no strobe, no exposure bloom, no flicker, no camera shake, no surreal motion, no cartoon or CGI appearance, no frozen-photo look.",
+      "width": 448,
+      "height": 800,
+      "length": 243,
+      "first_frame": [
+        "10",
+        0
+      ],
+      "last_frame": [
+        "14",
+        0
+      ]
+    }
+  },
+  "21": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "20",
+        0
+      ],
+      "latent": [
+        "20",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "11",
+        0
+      ],
+      "frame_idx": 48
+    }
+  },
+  "22": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "21",
+        0
+      ],
+      "latent": [
+        "20",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "12",
+        0
+      ],
+      "frame_idx": 96
+    }
+  },
+  "23": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "22",
+        0
+      ],
+      "latent": [
+        "20",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ],
+      "frame_idx": 144
+    }
+  },
+  "24": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "23",
+        0
+      ],
+      "latent": [
+        "20",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "14",
+        0
+      ],
+      "frame_idx": 192
+    }
+  },
+  "30": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "conditioning": [
+        "24",
+        0
+      ]
+    }
+  },
+  "31": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 6122026
+    }
+  },
+  "32": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "33": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 8,
+      "denoise": 1.0
+    }
+  },
+  "34": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "31",
+        0
+      ],
+      "guider": [
+        "30",
+        0
+      ],
+      "sampler": [
+        "32",
+        0
+      ],
+      "sigmas": [
+        "33",
+        0
+      ],
+      "latent_image": [
+        "20",
+        1
+      ]
+    }
+  },
+  "40": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "34",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "41": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "34",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "42": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "40",
+        0
+      ],
+      "audio": [
+        "41",
+        0
+      ],
+      "fps": 24.0,
+      "codec": "none"
+    }
+  },
+  "43": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "42",
+        0
+      ],
+      "filename_prefix": "minimax_h3_photoday_v3/photoday_h3_dynamic_v3",
+      "format": "mp4",
+      "codec": "h264"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "project": "PhotoDay H3 v5 selective scene repair",
+  "strategy": "Regenerate scenes 01, 03 and 04 as isolated H3 shots at higher native resolution; keep scenes 02 and 05 from the approved v4 source sequence unchanged. Scene 03 was added after frame-by-frame QC exposed the obsolete photographer and an internal composition jump in the approved-v4 segment.",
+  "scene": "03",
+  "take": 1,
+  "seed": 6122103,
+  "width": 576,
+  "height": 1024,
+  "length": 124,
+  "fps": 24.0,
+  "steps": 8,
+  "sampler": "res_multistep",
+  "scheduler": "simple",
+  "denoise": 1.0,
+  "models": {
+    "unet": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+    "turbo_lora": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+    "turbo_strength": 1.0
+  },
+  "prompt_file": "prompts/scene03_video_prompt_v5.txt",
+  "keyframe_file": "keyframes_v5/scene_03_start_v3_no_photographer.png",
+  "keyframe_sha256": "29B89215AD72A23C2A60C2C6D3EA27417EFD68F825BCFD4A4DF74C77F641709C",
+  "workflow_file": "workflow/minimax_h3_v5_scene03_take01_api.json",
+  "prompt_id": null,
+  "render_minutes": null,
+  "output": null,
+  "output_sha256": null
+}

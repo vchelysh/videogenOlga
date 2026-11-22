@@ -1,0 +1,91 @@
+{
+  "project": "PhotoDay H3 v5 selective scene repair",
+  "strategy": "Regenerate scenes 01, 03 and 04 as isolated H3 shots at higher native resolution; keep scenes 02 and 05 from the approved v4 source sequence unchanged. Scene 03 was added after frame-by-frame QC exposed the obsolete photographer and an internal composition jump in the approved-v4 segment.",
+  "base_delivery": "outputs/PhotoDay_06-12_MINIMAX_H3_v4_SHARP_1080x1920_FINAL.mp4",
+  "base_lossless_frames": "outputs/upscaled_frames/source_%05d.png",
+  "fps": 24.0,
+  "steps": 8,
+  "sampler": "res_multistep",
+  "scheduler": "simple",
+  "denoise": 1.0,
+  "models": {
+    "unet": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+    "turbo_lora": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+    "turbo_strength": 1.0
+  },
+  "scenes": {
+    "01": {
+      "width": 576,
+      "height": 1024,
+      "length": 124,
+      "seed": 6122101,
+      "prompt_file": "prompts/scene01_video_prompt_v5.txt",
+      "keyframe_file": "keyframes_v5/scene_01_start.png",
+      "conditioning": "first frame only",
+      "delivery_frame_count": 48,
+      "selection_start_frame": 0,
+      "accepted_source_window_zero_based": [0, 28],
+      "temporal_resample": {
+        "method": "FILM arbitrary-timestep resampling",
+        "source_frame_count": 29,
+        "output_frame_count": 48,
+        "manifest": "outputs/raw/v5/scene01_selected_film_48f/resample_manifest.json"
+      },
+      "purpose": "Stable sharp heroine face, clean hair/fur edges, lit moving candle flames and no pearl flare."
+    },
+    "03": {
+      "width": 576,
+      "height": 1024,
+      "length": 124,
+      "seed": 6122103,
+      "prompt_file": "prompts/scene03_video_prompt_v5.txt",
+      "keyframe_file": "keyframes_v5/scene_03_start_v3_no_photographer.png",
+      "conditioning": "first frame only",
+      "delivery_frame_count": 48,
+      "accepted_take": null,
+      "selection_start_frame": null,
+      "accepted_source_window_zero_based": null,
+      "purpose": "Continuous makeup-and-styling shot with exactly three physical women, no old photographer or camera, no internal transition and stable sharp faces."
+    },
+    "04": {
+      "width": 576,
+      "height": 1024,
+      "length": 124,
+      "seed": 6122104,
+      "prompt_file": "prompts/scene04_video_prompt_v5.txt",
+      "keyframe_file": "keyframes_v5/scene_04_start_v2_unlit_flash.png",
+      "conditioning": "first frame only",
+      "delivery_frame_count": 48,
+      "accepted_take": 2,
+      "selection_start_frame": 15,
+      "accepted_source_window_zero_based": [15, 62],
+      "purpose": "All faces remain sharp; supplied blonde photographer looks through the viewfinder at the heroine; dark unlit flash remains attached to the hot shoe."
+    }
+  },
+  "locked_delivery_ranges_one_based": [
+    {"scene": "02", "frames": "49-96", "source": "approved v4 lossless source frames"},
+    {"scene": "05", "frames": "193-240", "source": "approved v4 lossless source frames"}
+  ],
+  "upscale_profile": "prompts/postprocess_spec_v4_sharp.json",
+  "upscale_policy": "Reuse v4 settings unchanged: 100% RealESRGAN_x4plus, UnsharpMask radius 0.65 / amount 75 / threshold 2, x264 CRF 12 slow tune film.",
+  "rejected_attempts": [
+    {
+      "artifact": "outputs/raw/v5/PhotoDay_H3_v5_scene01_take01_576x1024_124f.mov",
+      "scope": "frames 29-123 only",
+      "reason": "Candle flames progressively became decorative starburst rays; only clean frames 0-28 were retained and resampled."
+    },
+    {
+      "artifact": "outputs/raw/v5/PhotoDay_H3_v5_scene04_take01_576x1024_124f.mov",
+      "scope": "entire take",
+      "reason": "The bright panel in the initial flash guide progressively bloomed even though the flash remained attached; guide was corrected to dark non-emissive plastic and take 02 was generated."
+    },
+    {
+      "artifact": "approved v4 source frames 97-144 previously reused for scene 03",
+      "scope": "entire reused scene",
+      "reason": "Frame-by-frame review after assembly showed the obsolete background photographer from the prior version and a composition jump from makeup to champagne inside the two-second shot. The full scene is replaced rather than patched at the nominal scene-04 boundary."
+    }
+  ],
+  "notes": "The 124-frame H3 length is inside the model's trained range. Only visually approved material is used. Scene 01 uses a contiguous clean 29-frame window resampled to 48 with FILM; scene 04 uses one contiguous 48-frame window from accepted take 02. Scene 03 acceptance fields are populated only after full frame-by-frame review."
+}

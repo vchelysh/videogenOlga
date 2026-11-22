@@ -1,0 +1,61 @@
+{
+  "full_frame": {
+    "v3": {
+      "tenengrad": {
+        "mean": 1380.9927647908528,
+        "median": 1417.916015625,
+        "min": 742.7665405273438,
+        "max": 2628.11279296875,
+        "std": 459.82757895794384
+      },
+      "laplacian": {
+        "mean": 1358.7260765075685,
+        "median": 1353.1412353515625,
+        "min": 650.51025390625,
+        "max": 2941.32763671875,
+        "std": 576.8285885884404
+      }
+    },
+    "v4": {
+      "tenengrad": {
+        "mean": 2564.3811737060546,
+        "median": 2610.50732421875,
+        "min": 1264.4140625,
+        "max": 5251.38427734375,
+        "std": 1040.4912770994772
+      },
+      "laplacian": {
+        "mean": 4164.775901285807,
+        "median": 4057.1134033203125,
+        "min": 1726.8016357421875,
+        "max": 9950.662109375,
+        "std": 2049.0787024035117
+      }
+    }
+  },
+  "ratios_v4_over_v3": {
+    "tenengrad": 1.8569113749806085,
+    "laplacian": 3.065206426295159
+  },
+  "final_hair_temporal_stability": {
+    "v3": {
+      "normalized_highpass_temporal_change_mean": 0.23768216621209967,
+      "normalized_highpass_temporal_change_p95": 0.4165073901414871,
+      "hair_highpass_energy_mean": 0.002227842439121256,
+      "hair_highpass_energy_cv": 0.00935454149393403
+    },
+    "v4": {
+      "normalized_highpass_temporal_change_mean": 0.28049960986096806,
+      "normalized_highpass_temporal_change_p95": 0.4742250859737396,
+      "hair_highpass_energy_mean": 0.0031617407366866246,
+      "hair_highpass_energy_cv": 0.010174490115144588
+    }
+  },
+  "hair_crop": [
+    0,
+    80,
+    900,
+    980
+  ],
+  "hair_frames": "193-240"
+}

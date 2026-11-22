@@ -1,0 +1,56 @@
+{
+  "source_video": "outputs/raw/PhotoDay_H3_v3_clean_FILM_448x800_10s.mp4",
+  "lossless_source_frames": "outputs/upscaled_frames/source_%05d.png",
+  "reason_for_lossless_source": "Avoid an additional decode/re-encode generation before super-resolution.",
+  "audio_source": "references/PhotoDay_v1_motion_master.mp4",
+  "delivery_output": "outputs/PhotoDay_06-12_MINIMAX_H3_v4_SHARP_1080x1920_FINAL.mp4",
+  "delivery": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 24,
+    "frame_count": 240,
+    "duration_seconds": 10.0,
+    "video_codec": "libx264",
+    "preset": "slow",
+    "tune": "film",
+    "crf": 12,
+    "pixel_format": "yuv420p",
+    "color": "bt709",
+    "audio_codec": "aac",
+    "audio_bitrate": "192k",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2
+  },
+  "upscale": {
+    "model": "RealESRGAN_x4plus.pth",
+    "model_sha256": "4FA0D38905F75AC06EB49A7951B426670021BE3018265FD191D2125DF9D682F1",
+    "tile": 256,
+    "overlap": 32,
+    "real_esrgan_blend": 1.0,
+    "lanczos_blend": 0.0,
+    "resize_policy": "Real-ESRGAN x4, Lanczos downsample to cover, center-crop; no geometric stretching",
+    "unsharp_mask": {
+      "radius": 0.65,
+      "percent": 75,
+      "threshold": 2
+    },
+    "face_restoration": false,
+    "temporal_interpolation": "No global interpolation; existing scene-4 FILM repair is inherited unchanged."
+  },
+  "selection_evidence": {
+    "tested_variants": [
+      "previous 65% x4plus / 35% Lanczos",
+      "direct Lanczos plus unsharp",
+      "100% x4plus plus unsharp",
+      "85% x4plus / 15% Lanczos plus unsharp",
+      "100% x2plus plus unsharp",
+      "85% x2plus / 15% Lanczos plus unsharp",
+      "general-x4v3 plus unsharp"
+    ],
+    "selected": "100% x4plus plus mild unsharp",
+    "full_frame_tenengrad_ratio_v4_over_v3": 1.8569113749806085,
+    "full_frame_laplacian_ratio_v4_over_v3": 3.065206426295159,
+    "final_hair_detail_cv": 0.010174490115144588,
+    "metrics": "review/upscale_v4_final/sharpness_temporal_summary.json"
+  }
+}

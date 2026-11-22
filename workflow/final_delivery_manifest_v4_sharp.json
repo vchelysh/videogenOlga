@@ -1,0 +1,32 @@
+{
+  "project": "PhotoDay MiniMax H3 v3 generation / v4 sharp delivery",
+  "created_local_date": "2026-11-22",
+  "native_pre_upscale_file": "outputs/raw/PhotoDay_H3_v3_clean_FILM_448x800_10s.mp4",
+  "final_file": "outputs/PhotoDay_06-12_MINIMAX_H3_v4_SHARP_1080x1920_FINAL.mp4",
+  "sha256": "0E8BED358D7F2D40F5B28B34AB39EFAA78AC9C08DD3357618D6A2BC890FF0835",
+  "size_bytes": 36237962,
+  "duration_seconds": 10.0,
+  "frame_count": 240,
+  "fps": 24,
+  "video": {
+    "codec": "h264",
+    "profile": "High",
+    "width": 1080,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "bit_rate": 28789951,
+    "x264_crf": 12,
+    "x264_preset": "slow",
+    "x264_tune": "film"
+  },
+  "audio": {
+    "codec": "aac",
+    "profile": "LC",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_rate": 193309
+  },
+  "upscale_spec": "prompts/postprocess_spec_v4_sharp.json",
+  "qc_report": "review/QC_REPORT_v4_SHARP.md",
+  "status": "passed"
+}
