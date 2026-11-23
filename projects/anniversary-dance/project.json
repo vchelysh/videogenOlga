@@ -4,7 +4,7 @@
   "id": "anniversary-dance",
   "title": "Юбилейный танец пары",
   "created": "2026-11-23",
-  "status": "design",
+  "status": "delivered",
   "paths": {
     "prompts": "prompts",
     "workflow": "workflow",
@@ -13,8 +13,8 @@
     "workspace": "workspace"
   },
   "delivery": {
-    "active_release": "v1-design",
-    "master": null,
+    "active_release": "v2-gaze-hair-repair-upscaled-v1",
+    "master": "workspace/runs/scene-01-upscale-realesrgan-x2-v1/outputs/scene-01-upscale-realesrgan-x2-v1_00001__delivery.mp4",
     "width": 1080,
     "height": 1440,
     "fps": 24.0,
@@ -42,20 +42,32 @@
     "prompts/scene-01-anchor-edit-brief-v1.md",
     "prompts/scene-01-contract-v1.json",
     "prompts/scene-01-h3-prompt-v1.txt",
+    "prompts/scene-01-contract-v2.json",
+    "prompts/scene-01-h3-prompt-v2.txt",
     "workflow/generation-spec-v1.json",
+    "workflow/generation-spec-v2.json",
+    "workflow/upscale-spec-v1.json",
+    "workflow/scene-01-repair-fl2va-v2-api.template.json",
+    "workflow/scene-01-repair-fl2va-v2-gui.json",
+    "workflow/scene-01-upscale-realesrgan-x2-v1-api.template.json",
+    "workflow/scene-01-upscale-realesrgan-x2-v1-gui.json",
     "workflow/PRODUCTION_PLAN_v1.md",
     "review/QC_CHECKLIST_v1.md",
-    "decisions/ADR-001-conditioning-and-shot-design.md"
+    "review/QC_REPORT_scene-01-proof-i2v-v1.md",
+    "review/QC_REPORT_scene-01-repair-fl2va-v2.md",
+    "decisions/ADR-001-conditioning-and-shot-design.md",
+    "decisions/ADR-002-gaze-hair-and-review-format-repair.md",
+    "decisions/ADR-003-motion-continuity-and-accepted-delivery.md"
   ],
   "quality_gates": {
-    "contract": "ready_for_user_review",
+    "contract": "v2_accepted",
     "references": "ingested_and_hashed",
-    "anchor_preflight": "pending",
-    "all_native_frames": "pending",
-    "anatomy_and_identity": "pending",
-    "assembly_mapping": "pending",
-    "upscale_temporal_stability": "pending",
-    "final_encode": "pending"
+    "anchor_preflight": "first_and_repair_last_accepted_with_future_compatibility_lesson",
+    "all_native_frames": "pass",
+    "anatomy_and_identity": "pass_v2",
+    "assembly_mapping": "single_shot_pass",
+    "upscale_temporal_stability": "pass",
+    "final_encode": "pass_user_accepted_motion_cadence_documented"
   },
   "execution": {
     "preferred_backend": "local_mcp",

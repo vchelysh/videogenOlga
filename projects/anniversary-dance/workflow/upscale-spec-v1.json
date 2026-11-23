@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "run_id": "scene-01-upscale-realesrgan-x2-v1",
+  "status": "accepted_delivery",
+  "source_run": "scene-01-repair-fl2va-v2",
+  "source_artifact": "workspace/runs/scene-01-repair-fl2va-v2/outputs/scene-01-repair-fl2va-v2_00001__review.mp4",
+  "backend": "local_comfyui_api",
+  "model": "RealESRGAN_x2plus.pth",
+  "method": [
+    "2x Real-ESRGAN frame upscale from 576x768 to 1152x1536",
+    "Lanczos resize to exact delivery size 1080x1440"
+  ],
+  "temporal_policy": "no diffusion, no face restoration, no frame interpolation",
+  "delivery": {
+    "width": 1080,
+    "height": 1440,
+    "fps": 24,
+    "frame_count": 158,
+    "duration_seconds": 6.583333,
+    "container": "mp4",
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "faststart": true
+  },
+  "acceptance": [
+    "identity and facial expression are unchanged from the accepted native run",
+    "no new hairline shimmer, ringing, crawling edges, or facial detail popping",
+    "exactly 158 frames at 24 fps and 1080x1440",
+    "review and delivery artifact is H.264 MP4 yuv420p with faststart"
+  ],
+  "result": {
+    "accepted_artifact": "workspace/runs/scene-01-upscale-realesrgan-x2-v1/outputs/scene-01-upscale-realesrgan-x2-v1_00001__delivery.mp4",
+    "sha256": "6539824B1A7F688192C92794331B1072334D6800AD176B2E1811FE7D401114D4",
+    "accepted_by_user": "2026-11-24",
+    "qc_report": "review/QC_REPORT_scene-01-repair-fl2va-v2.md"
+  }
+}

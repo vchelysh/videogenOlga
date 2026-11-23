@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "scene_id": "scene-01",
+  "intent": "One sentence describing what the audience must see and understand.",
+  "duration_seconds": 4.0,
+  "fps": 24,
+  "aspect_ratio": "9:16",
+  "mode": "i2va",
+  "inputs": {
+    "frame_anchors": [
+      {
+        "role": "first",
+        "path": "assets/scene-01-first.png"
+      }
+    ],
+    "references": []
+  },
+  "subjects": [
+    {
+      "id": "heroine",
+      "count": 1,
+      "screen_position": "center",
+      "identity_lock": "Match the approved identity reference.",
+      "wardrobe_lock": "Wardrobe remains unchanged.",
+      "visible_hands": 1
+    }
+  ],
+  "props": [
+    {
+      "id": "hero_prop",
+      "count": 1,
+      "owner": "heroine",
+      "hand": "right",
+      "initial_state": "Held securely in the right hand.",
+      "final_state": "Still held securely in the same right hand.",
+      "handoff": false
+    }
+  ],
+  "timeline": [
+    {
+      "start": 0.0,
+      "end": 1.0,
+      "beat": "establish",
+      "state_change": "Prove subject, hand, prop, and starting composition.",
+      "motion_continuity": "Accelerate gradually from rest; no still-to-motion pop."
+    },
+    {
+      "start": 1.0,
+      "end": 3.0,
+      "beat": "execute",
+      "state_change": "One small continuous action occurs.",
+      "motion_continuity": "Continue the same position, direction, and cadence across both boundaries."
+    },
+    {
+      "start": 3.0,
+      "end": 4.0,
+      "beat": "end-state lock",
+      "state_change": "Action settles; final geometry holds.",
+      "motion_continuity": "Decelerate smoothly into the hold; no catch-up jump."
+    }
+  ],
+  "motion": {
+    "path": "One uninterrupted small physical trajectory.",
+    "cadence": "slow and continuous",
+    "easing": "gradual ease-in and one-second ease-out",
+    "direction_changes": 0,
+    "allowed_body_motion": "Name the joints and torso axes that move together.",
+    "locked_contacts": "Name ownership and contacts that remain invariant.",
+    "post_interpolation": "optional_after_native_pass"
+  },
+  "camera": {
+    "framing": "medium close-up",
+    "movement": "locked",
+    "amplitude": "none",
+    "speed": "static",
+    "final_framing": "same composition"
+  },
+  "audio": {
+    "dialogue": [],
+    "language": null,
+    "diegetic": "quiet room tone",
+    "music": "none",
+    "lip_sync": false
+  },
+  "locks": [
+    "Exactly one physical heroine remains present.",
+    "The prop stays in the heroine's right hand."
+  ],
+  "avoid": [
+    "No detached, duplicated, or ownerless hand.",
+    "No new person or prop instance appears."
+  ],
+  "acceptance": [
+    "All delivery frames show exactly one physical heroine.",
+    "The visible right hand has an unbroken arm path and owns the prop.",
+    "The final half-second holds the required end state."
+  ],
+  "execution": {
+    "backend": "auto",
+    "cloud_allowed": false,
+    "paid_allowed": false,
+    "downloads_allowed": false
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": ["1", 0],
+      "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "anniversary-dance/scene-01-first-v1.png"
+    }
+  },
+  "20": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": ["3", 0],
+      "vae": ["4", 0],
+      "prompt": "__PROMPT_FROM_FILE__",
+      "width": 480,
+      "height": 640,
+      "length": 158,
+      "first_frame": ["10", 0]
+    }
+  },
+  "30": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": ["2", 0],
+      "conditioning": ["20", 0]
+    }
+  },
+  "31": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 24112401
+    }
+  },
+  "32": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "33": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": ["2", 0],
+      "scheduler": "simple",
+      "steps": 8,
+      "denoise": 1.0
+    }
+  },
+  "34": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": ["31", 0],
+      "guider": ["30", 0],
+      "sampler": ["32", 0],
+      "sigmas": ["33", 0],
+      "latent_image": ["20", 1]
+    }
+  },
+  "40": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["34", 0],
+      "vae": ["4", 0]
+    }
+  },
+  "42": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": ["40", 0],
+      "fps": 24.0,
+      "codec": "none"
+    }
+  },
+  "43": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": ["42", 0],
+      "filename_prefix": "anniversary-dance/scene-01-proof-i2v-v1",
+      "format": "mov",
+      "codec": "prores"
+    }
+  }
+}

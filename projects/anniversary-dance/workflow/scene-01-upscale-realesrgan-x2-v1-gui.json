@@ -1,0 +1,468 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadVideo",
+      "pos": [
+        40,
+        140
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "file",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "file"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "anniversary-dance/scene-01-repair-fl2va-v2-review.mp4"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "GetVideoComponents",
+      "pos": [
+        480,
+        203
+      ],
+      "size": [
+        320,
+        184
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "bit_depth",
+          "type": "COMBO",
+          "links": []
+        },
+        {
+          "name": "color_space",
+          "type": "COMBO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "GetVideoComponents"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        40,
+        330
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_name",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "model_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "RealESRGAN_x2plus.pth"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        920,
+        235
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 3
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ImageUpscaleWithModel"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "ImageScale",
+      "pos": [
+        1360,
+        143
+      ],
+      "size": [
+        320,
+        304
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "upscale_method",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "upscale_method"
+          }
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "name": "crop",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "crop"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "lanczos",
+        1080,
+        1440,
+        "disabled"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CreateVideo",
+      "pos": [
+        1800,
+        116
+      ],
+      "size": [
+        320,
+        358
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "name": "bit_depth",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "bit_depth"
+          }
+        },
+        {
+          "name": "color_space",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "color_space"
+          }
+        },
+        {
+          "name": "chroma_subsampling",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "chroma_subsampling"
+          }
+        },
+        {
+          "name": "codec",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "codec"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        8,
+        "sRGB",
+        "420",
+        "none"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "SaveVideo",
+      "pos": [
+        2240,
+        40
+      ],
+      "size": [
+        320,
+        510
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 6
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "link": null,
+          "widget": {
+            "name": "format"
+          }
+        },
+        {
+          "name": "codec",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "link": null,
+          "widget": {
+            "name": "codec"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "anniversary-dance/scene-01-upscale-realesrgan-x2-v1",
+        "mp4",
+        "h264"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      2,
+      0,
+      4,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      6,
+      0,
+      7,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Anniversary dance: temporal-safe 1080x1440 upscale",
+      "bounding": [
+        -5,
+        -51,
+        2610,
+        646
+      ],
+      "color": "#335159",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

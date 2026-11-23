@@ -8,11 +8,11 @@ Project ID: `anniversary-dance`
 
 ## Текущее состояние
 
-- Исходная танцевальная фотография и две дополнительные фотографии пары скопированы в игнорируемый `workspace/`.
-- Из дополнительных фотографий подготовлены четыре identity-кропа: по два на каждого человека.
-- Выбран режим MiniMax H3 FL2VA с первым и последним кадрами.
-- Сценарий, scene contract, prompt draft, ownership ledger, generation spec и QC-план готовы к проверке.
-- Генерация ещё не запускалась. ComfyUI во время последнего preflight не был запущен.
+- Финальный ролик принят пользователем: 1080x1440, H.264 MP4, 24 fps, 158 кадров, 6,583 с.
+- Мужчина эмоционально включён с первых кадров; проблемное мерцание волос из первого proof устранено до приемлемого уровня.
+- Нативный FL2VA v2 и RealESRGAN upscale сохранены как неизменяемые runs с manifests и хешами.
+- Остаточная лёгкая рваность движения принята для этого релиза и подробно зафиксирована как урок для будущих проектов.
+- Активный master: `workspace/runs/scene-01-upscale-realesrgan-x2-v1/outputs/scene-01-upscale-realesrgan-x2-v1_00001__delivery.mp4`.
 
 ## Главные документы
 
@@ -22,6 +22,8 @@ Project ID: `anniversary-dance`
 - `prompts/scene-01-contract-v1.json` — проверяемый контракт H3.
 - `workflow/PRODUCTION_PLAN_v1.md` — последовательность производства.
 - `review/QC_CHECKLIST_v1.md` — критерии приёмки.
+- `review/QC_REPORT_scene-01-repair-fl2va-v2.md` — финальная проверка, хеш master и анализ ритма движения.
+- `decisions/ADR-003-motion-continuity-and-accepted-delivery.md` — решение о приёмке и стандарт плавности для будущих проектов.
 
 ## Проверка
 

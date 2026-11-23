@@ -1,0 +1,57 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "anniversary-dance/scene-01-repair-fl2va-v2-review.mp4"
+    }
+  },
+  "2": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": ["1", 0]
+    }
+  },
+  "3": {
+    "class_type": "UpscaleModelLoader",
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    }
+  },
+  "4": {
+    "class_type": "ImageUpscaleWithModel",
+    "inputs": {
+      "upscale_model": ["3", 0],
+      "image": ["2", 0]
+    }
+  },
+  "5": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": ["4", 0],
+      "upscale_method": "lanczos",
+      "width": 1080,
+      "height": 1440,
+      "crop": "disabled"
+    }
+  },
+  "6": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": ["5", 0],
+      "fps": ["2", 2],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    }
+  },
+  "7": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": ["6", 0],
+      "filename_prefix": "anniversary-dance/scene-01-upscale-realesrgan-x2-v1",
+      "format": "mp4",
+      "codec": "h264"
+    }
+  }
+}

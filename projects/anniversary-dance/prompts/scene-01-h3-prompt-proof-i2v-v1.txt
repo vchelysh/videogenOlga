@@ -1,0 +1,13 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] One continuous photorealistic 3:4 family-event shot, no cut and no camera movement. <Picture 1> is the exact opening composition and the authoritative identity, age, wardrobe, hairstyle, glasses, body-proportion, lighting and colour reference. Exactly two foreground adult people remain in the same closed slow-dance position: the woman on frame left in her burgundy patterned long dress, blonde updo and glasses, and the man on frame right in his dark suit, pale blue shirt and dark patterned tie. Do not reinterpret or beautify either face and do not invent frontal facial details that are not visible in <Picture 1>.
+
+All four visible hands keep fixed ownership and all three dance contacts remain unbroken for the entire shot. The woman's left hand stays on the man's right shoulder. The woman's right hand and the man's left hand stay joined in one unchanged dance grip at lower centre-right. The man's right hand stays on the woman's left waist over the burgundy fabric. Every hand stays continuously connected to the correct wrist, forearm, elbow, sleeve and body. Fingers remain relaxed and never regrip, slide, separate, cross, duplicate or change owner.
+
+From 00:00.000 to 00:00.750 the still photograph becomes naturally alive through quiet breathing, tiny shoulder motion and one soft blink. From 00:00.750 to 00:02.250 the man gently shifts his weight and the woman mirrors him, preparing one slow dance step. From 00:02.250 to 00:04.750 they complete one small smooth slow-dance step with a shared body rotation of no more than eight degrees, then ease back without foot sliding or hand movement. From 00:04.750 to 00:05.750 the movement decelerates; the woman raises her chin only slightly and turns her face only a few degrees toward the man while he keeps his gaze on her. Their expressions warm into natural restrained smiles. From 00:05.750 to 00:06.583 they hold the same dance grip and smile at each other with only subtle breathing.
+
+The camera remains locked at the original height, distance and crop. Keep stable focus on both faces and all hands. The original restaurant background, guests, flash reflection, floor geometry and exposure remain completely static and secondary; no background person moves or becomes more recognizable. No spin, dip, arm raise, hand release, regrip, face swap, age drift, changing glasses, talking mouth, extra limb, malformed fingers, floor slide, pose jump, cut, zoom, light pulse, background morph, text, logo or watermark.
+
+overall_soundscape: N/A. Video-only proof with no dialogue, vocalization or generated audio.
+
+non_diegetic_music: N/A.

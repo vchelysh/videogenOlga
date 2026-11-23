@@ -1,0 +1,6 @@
+interface:
+  display_name: "H3 Video Director"
+  short_description: "Direct reliable MiniMax H3 video scenes"
+  default_prompt: "Use $h3-video-director to turn my rough video idea into a feasible H3 scene contract and production plan."
+policy:
+  allow_implicit_invocation: true
