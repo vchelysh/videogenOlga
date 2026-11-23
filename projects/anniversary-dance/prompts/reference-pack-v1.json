@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "project": "anniversary-dance",
+  "created": "2026-11-24",
+  "source_images": [
+    {
+      "id": "source_dance_photo",
+      "path": "workspace/references/source/couple_dance_source.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "26E9606C8AD362A7E803D59B9161DE50863142D1F2EC8BA35C9B00D289279E12",
+      "role": "authoritative composition, age, wardrobe, hair, glasses, pose, hand contacts, lighting"
+    },
+    {
+      "id": "identity_group_01",
+      "path": "workspace/references/identity/couple_identity_01.png",
+      "width": 2800,
+      "height": 1900,
+      "sha256": "6282F7A01A908A7100C713D8A22B4527D856E2F0CC48DBE1622DDEAB52B5092A",
+      "role": "source for mild smiles and three-quarter facial geometry"
+    },
+    {
+      "id": "identity_group_02",
+      "path": "workspace/references/identity/couple_identity_02.png",
+      "width": 2800,
+      "height": 1900,
+      "sha256": "5126EAA1309F451847846EA3A4B3F0EDECDFD5A819598C3857E21068B97D9F44",
+      "role": "source for frontal facial geometry and a broad natural smile"
+    }
+  ],
+  "derived_identity_crops": [
+    {
+      "subject": "partner_man",
+      "path": "workspace/references/identity/man_ref_01_three_quarter.png",
+      "width": 700,
+      "height": 900,
+      "sha256": "1A86F2BD8F6F9E3DCE67B16203BEB32DA3960F30BB7FE2527E7937A1B28E0A62",
+      "priority": 1,
+      "use": "primary identity and restrained closed-mouth smile"
+    },
+    {
+      "subject": "partner_man",
+      "path": "workspace/references/identity/man_ref_02_frontal.png",
+      "width": 700,
+      "height": 1000,
+      "sha256": "EED1D90A4A808FBC5FD50F3B1165AE054F45B5F426D43FEE98B03A1D711AEBBA",
+      "priority": 2,
+      "use": "frontal proportions only; ignore balloons, glass and background"
+    },
+    {
+      "subject": "partner_woman",
+      "path": "workspace/references/identity/woman_ref_01_soft_smile.png",
+      "width": 700,
+      "height": 900,
+      "sha256": "3E210A53E65380CA61FE4D6EFB6833BC32C8142067ED76CDC46980A1A4DB4AFF",
+      "priority": 1,
+      "use": "primary identity, glasses and soft smile"
+    },
+    {
+      "subject": "partner_woman",
+      "path": "workspace/references/identity/woman_ref_02_broad_smile.png",
+      "width": 800,
+      "height": 1100,
+      "sha256": "0F9B7A52F49051F21AE9288C0F918B513BD7A32729F51238EE689E3C31158528",
+      "priority": 2,
+      "use": "smile dynamics only; ignore cake, tray, clothing and background"
+    }
+  ],
+  "derived_previews": [
+    {
+      "id": "first_anchor_crop_preview",
+      "path": "workspace/anchors/prep/scene-01-first-crop-preview-v1.png",
+      "width": 951,
+      "height": 1268,
+      "sha256": "917C6290B33EFB72AFDF3EC86FEA732AC8BCB2B5031C9857EA1410E234FA7F10",
+      "status": "crop_only_not_approved_anchor"
+    }
+  ],
+  "planned_anchors": [
+    {
+      "role": "first",
+      "path": "workspace/anchors/scene-01-first-v1.png",
+      "status": "pending_background_cleanup_and_qc"
+    },
+    {
+      "role": "last",
+      "path": "workspace/anchors/scene-01-last-v1.png",
+      "status": "pending_identity_edit_and_qc"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schemas/project.schema.json",
+  "schema_version": 1,
+  "id": "anniversary-dance",
+  "title": "Юбилейный танец пары",
+  "created": "2026-11-23",
+  "status": "design",
+  "paths": {
+    "prompts": "prompts",
+    "workflow": "workflow",
+    "review": "review",
+    "scripts": "scripts",
+    "workspace": "workspace"
+  },
+  "delivery": {
+    "active_release": "v1-design",
+    "master": null,
+    "width": 1080,
+    "height": 1440,
+    "fps": 24.0,
+    "frame_count": 158,
+    "duration_seconds": 6.583333333333333
+  },
+  "timeline": {
+    "scenes": [
+      {
+        "id": "scene-01",
+        "start_frame": 1,
+        "end_frame": 158,
+        "intent": "Пара делает один спокойный медленный танцевальный шаг, продолжает мягкое покачивание и заканчивает взаимной тёплой улыбкой без разрыва рук."
+      }
+    ]
+  },
+  "required_files": [
+    "README.md",
+    "ENVIRONMENT.md",
+    "prompts/brief.md",
+    "prompts/reference-plan-v1.md",
+    "prompts/reference-pack-v1.json",
+    "prompts/scene-01-plan-v1.md",
+    "prompts/scene-01-ownership-ledger-v1.md",
+    "prompts/scene-01-anchor-edit-brief-v1.md",
+    "prompts/scene-01-contract-v1.json",
+    "prompts/scene-01-h3-prompt-v1.txt",
+    "workflow/generation-spec-v1.json",
+    "workflow/PRODUCTION_PLAN_v1.md",
+    "review/QC_CHECKLIST_v1.md",
+    "decisions/ADR-001-conditioning-and-shot-design.md"
+  ],
+  "quality_gates": {
+    "contract": "ready_for_user_review",
+    "references": "ingested_and_hashed",
+    "anchor_preflight": "pending",
+    "all_native_frames": "pending",
+    "anatomy_and_identity": "pending",
+    "assembly_mapping": "pending",
+    "upscale_temporal_stability": "pending",
+    "final_encode": "pending"
+  },
+  "execution": {
+    "preferred_backend": "local_mcp",
+    "fallback_order": [
+      "agent_kit",
+      "local_api",
+      "comfy_cloud"
+    ],
+    "cloud_allowed": false,
+    "paid_allowed": false,
+    "downloads_allowed": false,
+    "comfy_host": "http://127.0.0.1:8188",
+    "declared_use_territory": "Ukraine",
+    "license_distribution_gate": "approved_for_declared_territory_2026-11-24"
+  },
+  "generation": {
+    "model_family": "MiniMax H3 FL2VA local open weights",
+    "conditioning": "first_and_last_frame",
+    "native_width": 576,
+    "native_height": 768,
+    "latent_frames": 158,
+    "audio_in_generation": false
+  }
+}

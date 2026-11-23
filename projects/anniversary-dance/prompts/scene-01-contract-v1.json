@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "scene_id": "scene-01",
+  "intent": "The original anniversary dance photograph comes alive as the same couple performs one small slow-dance step and finishes smiling warmly at each other.",
+  "duration_seconds": 6.583333333333333,
+  "fps": 24,
+  "aspect_ratio": "3:4",
+  "mode": "fl2va",
+  "inputs": {
+    "frame_anchors": [
+      {
+        "role": "first",
+        "path": "workspace/anchors/scene-01-first-v1.png",
+        "status": "pending_cleanup_and_anchor_qc"
+      },
+      {
+        "role": "last",
+        "path": "workspace/anchors/scene-01-last-v1.png",
+        "status": "pending_identity_edit_and_anchor_qc"
+      }
+    ],
+    "references": []
+  },
+  "subjects": [
+    {
+      "id": "partner_woman",
+      "count": 1,
+      "screen_position": "frame left, facing frame right toward partner_man",
+      "identity_lock": "Match the source dance photo and the two approved woman identity crops; preserve age, face proportions and glasses.",
+      "wardrobe_lock": "Burgundy patterned long dress, original hairstyle and original glasses remain unchanged.",
+      "visible_hands": 2
+    },
+    {
+      "id": "partner_man",
+      "count": 1,
+      "screen_position": "frame right, facing frame left toward partner_woman",
+      "identity_lock": "Match the source dance photo and the two approved man identity crops; preserve age and face proportions.",
+      "wardrobe_lock": "Dark suit, pale blue shirt and dark patterned tie remain unchanged.",
+      "visible_hands": 2
+    }
+  ],
+  "props": [],
+  "ownership_ledger": [
+    {
+      "id": "woman_left_hand",
+      "owner": "partner_woman",
+      "side": "left",
+      "contact": "rests on partner_man's right shoulder",
+      "start_state": "stable contact",
+      "end_state": "same stable contact",
+      "handoff": false
+    },
+    {
+      "id": "woman_right_hand",
+      "owner": "partner_woman",
+      "side": "right",
+      "contact": "held by partner_man's left hand",
+      "start_state": "single joined dance grip",
+      "end_state": "same joined dance grip",
+      "handoff": false
+    },
+    {
+      "id": "man_left_hand",
+      "owner": "partner_man",
+      "side": "left",
+      "contact": "holds partner_woman's right hand",
+      "start_state": "single joined dance grip",
+      "end_state": "same joined dance grip",
+      "handoff": false
+    },
+    {
+      "id": "man_right_hand",
+      "owner": "partner_man",
+      "side": "right",
+      "contact": "supports partner_woman at her left waist",
+      "start_state": "stable contact on burgundy fabric",
+      "end_state": "same stable contact",
+      "handoff": false
+    }
+  ],
+  "timeline": [
+    {
+      "start": 0.0,
+      "end": 0.75,
+      "beat": "establish",
+      "state_change": "The still photograph becomes alive through breathing, tiny shoulder motion and one natural blink while subject and hand counts remain proven."
+    },
+    {
+      "start": 0.75,
+      "end": 2.25,
+      "beat": "prepare",
+      "state_change": "partner_man gently shifts weight and partner_woman mirrors him without any hand or finger regrip."
+    },
+    {
+      "start": 2.25,
+      "end": 4.75,
+      "beat": "execute",
+      "state_change": "The couple completes one small slow-dance step and an up-to-eight-degree shared body rotation, then eases back."
+    },
+    {
+      "start": 4.75,
+      "end": 5.75,
+      "beat": "settle",
+      "state_change": "Body motion decelerates, partner_woman opens her face slightly and both expressions warm into smiles."
+    },
+    {
+      "start": 5.75,
+      "end": 6.583333333333333,
+      "beat": "end-state lock",
+      "state_change": "Both partners hold the same dance grip, smile at each other and continue only subtle breathing."
+    }
+  ],
+  "camera": {
+    "framing": "vertical medium-full two-shot",
+    "movement": "locked",
+    "amplitude": "none",
+    "speed": "static",
+    "final_framing": "identical to the approved last-frame anchor"
+  },
+  "audio": {
+    "dialogue": [],
+    "language": null,
+    "diegetic": "not rendered in the first production cycle",
+    "music": "none in H3; optional instrumental slow waltz added in post",
+    "lip_sync": false
+  },
+  "locks": [
+    "Exactly two foreground physical people and no recognizable background people remain present.",
+    "Both identities, ages, glasses, hairstyles and wardrobes remain continuous.",
+    "All four hands keep their original owner and all three dance contacts remain unbroken.",
+    "The camera, crop, floor, background geometry, exposure and warm colour palette remain stable.",
+    "There is one continuous shot with no cut, morph or camera move."
+  ],
+  "avoid": [
+    "No spin, dip, arm raise, hand release, regrip or finger action.",
+    "No detached, duplicated, fused or ownerless hand and no extra finger.",
+    "No face swap, age drift, beauty filter, changing glasses or talking mouth.",
+    "No new person, background face, reflection figure or moving guest.",
+    "No floor slide, pose jump, light pulse, flash bloom or background morph."
+  ],
+  "acceptance": [
+    "All 158 delivery frames contain the same recognizable woman and man with no identity swap or age drift.",
+    "Every visible hand has a readable path to its owner and all three original contacts remain intact in every frame.",
+    "The middle of the clip clearly reads as one gentle slow-dance step rather than a zoomed still image.",
+    "Both partners display stable natural smiles by 5.75 seconds and hold them through the final frame.",
+    "The camera and cleaned background remain stable without added people, pulsing highlights or internal cuts.",
+    "The final encoded master is 1080x1440, 24 fps, 158 frames and 6.583333 seconds."
+  ],
+  "execution": {
+    "backend": "local_mcp",
+    "fallback": "local_api",
+    "cloud_allowed": false,
+    "paid_allowed": false,
+    "downloads_allowed": false,
+    "render_profile": "proof 480x640x158, then native 576x768x158, 8 turbo steps",
+    "declared_use_territory": "Ukraine",
+    "license_distribution_gate": "approved_for_declared_territory_2026-11-24"
+  }
+}
